@@ -16,7 +16,7 @@ var webshot = require('webshot');
  * @param  {Object}     callback.err        An error object (if any)
  * @param  {String}     callback.path       The path on disk where the image is stored
  */
-var generate = module.exports.generate = function(url, options, callback) {
+var generate = module.exports.generate = function (url, options, callback) {
     options = options || {};
     options.width = options.width || 1024;
     options.height = options.height || 768;
@@ -40,8 +40,8 @@ var generate = module.exports.generate = function(url, options, callback) {
  * @param  {String}     callback.path   The path on disk where the image is stored
  * @api private
  */
-var screengrab = function(url, options, callback) {
-    var tempPath = temp.path({suffix: '.png'});
+var screengrab = function (url, options, callback) {
+    var tempPath = temp.path({ suffix: '.png' });
 
     var webshotOptions = {
         'renderDelay': options.delay,
@@ -60,9 +60,9 @@ var screengrab = function(url, options, callback) {
         }
     };
 
-    webshot(url, tempPath, webshotOptions, function(err) {
+    webshot(url, tempPath, webshotOptions, function (err) {
         if (err) {
-            return callback({'code': 500, 'msg': 'Unable to take a screenshot'});
+            return callback({ 'code': 500, 'msg': JSON.stringify(err) });
         }
 
         return callback(null, tempPath);
