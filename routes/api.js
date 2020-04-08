@@ -41,7 +41,10 @@ exports.generate = function (req, res) {
             }
             imageName += '.png';
             res.download(path, imageName, function () {
-                fs.unlink(path);
+                fs.unlink(path,function(err,res){
+                    console.log(err);
+                    console.log(res);
+                });
             });
         }
     });
