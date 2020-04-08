@@ -62,7 +62,7 @@ var screengrab = function (url, options, callback) {
 
     webshot(url, tempPath, webshotOptions, function (err) {
         if (err) {
-            return callback({ 'code': 500, 'msg': JSON.stringify(err) });
+            return callback({ 'code': 500, 'msg': err });
         }
 
         return callback(null, tempPath);
